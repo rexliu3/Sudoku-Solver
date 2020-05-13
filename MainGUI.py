@@ -10,7 +10,15 @@ pygame.font.init()
 
 
 class Grid:
-    board = [
+    def format_board(preboard):
+        main = [[], [], [], [], [], [], [], [], []]
+
+        for i in range(0, 9):
+            for j in range(0, 9):
+                main[i].append(int(preboard[i][0][j]))
+        return main
+
+    '''board = [
         [7, 8, 0, 4, 0, 0, 1, 2, 0],
         [6, 0, 0, 0, 7, 5, 0, 0, 9],
         [0, 0, 0, 6, 0, 1, 0, 7, 8],
@@ -20,7 +28,34 @@ class Grid:
         [0, 7, 0, 3, 0, 0, 0, 1, 2],
         [1, 2, 0, 0, 0, 7, 4, 0, 0],
         [0, 4, 9, 2, 0, 6, 0, 0, 7]
+    ]'''
+
+    '''board = [
+        [0, 7, 0, 0, 0, 4, 5, 0, 6],
+        [9, 0, 6, 7, 0, 2, 4, 3, 8],
+        [3, 4, 8, 9, 0, 6, 7, 0, 2],
+        [8, 9, 0, 0, 0, 0, 2, 0, 1],
+        [6, 1, 7, 0, 0, 8, 3, 5, 4],
+        [5, 0, 3, 6, 4, 1, 0, 0, 9],
+        [1, 6, 0, 0, 0, 7, 0, 2, 0],
+        [0, 0, 0, 0, 6, 0, 0, 4, 0],
+        [4, 3, 9, 0, 2, 5, 6, 8, 7]
+    ]'''
+
+    pre_board = [
+        ["000004050"],
+        ["250000079"],
+        ["000029300"],
+        ["026900008"],
+        ["090000010"],
+        ["100007920"],
+        ["009280000"],
+        ["680000031"],
+        ["070400000"]
+
     ]
+
+    board = format_board(pre_board)
 
     def __init__(self, rows, columns, width, height):
         self.rows = rows
@@ -97,6 +132,7 @@ class Grid:
                     return False
         return True
 
+
 class Cube:
     rows = 9
     columns = 9
@@ -163,6 +199,38 @@ def format_time(seconds):
     return timeFormatted
 
 
+def solve_visual(inputBoard, window, time, wrong):
+    # Recursive function to solve Sudoku Board
+    find = find_empty(inputBoard.model)
+    row, column = find
+    inputBoard.select(row, column, window)
+
+    for k in range(1, 10):
+        # Check if Board with value of k is valid
+        inputBoard.sketch(k)
+        update(inputBoard, window, time, wrong)
+
+        if is_valid(inputBoard.model, k, row, column):
+            # If the Board is valid, place the value k at that spot
+            inputBoard.place(k)
+            update(inputBoard, window, time, wrong)
+
+
+def solving_visual(inputBoard, window, time, wrong):
+    run = True
+    while not inputBoard.completed_sudoku() and run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+        solve_visual(inputBoard, window, time, wrong)
+
+
+def update(inputBoard, window, time, wrong):
+    redraw_window(window, inputBoard, time, wrong)
+    pygame.display.update()
+    inputBoard.update_model()
+
+
 def main():
     window = pygame.display.set_mode((540, 600))
     pygame.display.set_caption("Sudoku Game Solver")
@@ -200,6 +268,9 @@ def main():
                 if event.key == pygame.K_DELETE:
                     board.clear()
                     key = None
+                if event.key == pygame.K_SPACE:
+                    solving_visual(board, window, play_time, wrong)
+                    key = None
                 if event.key == pygame.K_RETURN:
                     i, j = board.selected
                     if board.cubes[i][j].temporary != 0:
@@ -223,6 +294,7 @@ def main():
 
         redraw_window(window, board, play_time, wrong)
         pygame.display.update()
+        board.update_model()
 
 
 main()

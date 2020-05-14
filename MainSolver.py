@@ -1,4 +1,4 @@
-# StandardSolver.py
+# MainSolver.py
 
 board = [
     [7, 8, 0, 4, 0, 0, 1, 2, 0],
@@ -89,7 +89,7 @@ def solve_sudoku(inputBoard):
     return False
 
 
-print_board(board)
+'''print_board(board)
 solve_sudoku(board)
 print("                                 ")
-print_board(board)
+print_board(board)'''

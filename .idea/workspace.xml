@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c5ebdefc-40c8-496f-b0da-7af514371d5b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,13 +165,29 @@
       <option name="presentableId" value="Default" />
       <updated>1589151254444</updated>
     </task>
+    <task id="LOCAL-00001" summary="AutoComplete working">
+      <created>1589419300055</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589419300057</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="AutoComplete working" />
+    <option name="LAST_COMMIT_MESSAGE" value="AutoComplete working" />
   </component>
   <component name="WindowStateProjectService">
     <state x="313" y="119" key="#Inspections" timestamp="1589265854913">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="313" y="119" key="#Inspections/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1589265854913" />
+    <state x="377" y="55" key="CommitChangelistDialog2" timestamp="1589419296508">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="377" y="55" key="CommitChangelistDialog2/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1589419296508" />
     <state width="1419" height="143" key="GridCell.Tab.0.bottom" timestamp="1589419077422">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -189,6 +204,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1419" height="143" key="GridCell.Tab.0.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1589419077422" />
+    <state x="313" y="193" key="Vcs.Push.Dialog.v2" timestamp="1589419481059">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="313" y="193" key="Vcs.Push.Dialog.v2/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1589419481059" />
     <state x="416" y="192" width="609" height="536" key="find.popup" timestamp="1589239498877">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

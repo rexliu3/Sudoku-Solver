@@ -1,36 +1,9 @@
 # MainSolver.py
 
-board = [
-    [7, 8, 0, 4, 0, 0, 1, 2, 0],
-    [6, 0, 0, 0, 7, 5, 0, 0, 9],
-    [0, 0, 0, 6, 0, 1, 0, 7, 8],
-    [0, 0, 7, 0, 4, 0, 2, 6, 0],
-    [0, 0, 1, 0, 5, 0, 9, 3, 0],
-    [9, 0, 4, 0, 6, 0, 0, 0, 5],
-    [0, 7, 0, 3, 0, 0, 0, 1, 2],
-    [1, 2, 0, 0, 0, 7, 4, 0, 0],
-    [0, 4, 9, 2, 0, 6, 0, 0, 7]
-]
-
-
 # 1) Pick next empty square
 # 2) Try all numbers for that empty square until you find one that works
 # 3) Repeat 1 & 2 for all empty squares until there is no possible solution to one square
 # 4) Backtrack
-
-def print_board(inputBoard):
-    # Prints board
-    for i in range(len(inputBoard)):
-        if i % 3 == 0 and i != 0:
-            print("-----------------------")
-        for j in range(len(inputBoard[0])):
-            if j % 3 == 0 and j != 0:
-                print(" | ", end="")
-            if j == 8:
-                print(inputBoard[i][j])
-            else:
-                print(str(inputBoard[i][j]) + " ", end="")
-
 
 def find_empty(inputBoard):
     # Returns position of next empty square
@@ -87,9 +60,3 @@ def solve_sudoku(inputBoard):
             # Set the position back to 0 because there is an error in the future settings
             inputBoard[row][column] = 0
     return False
-
-
-'''print_board(board)
-solve_sudoku(board)
-print("                                 ")
-print_board(board)'''

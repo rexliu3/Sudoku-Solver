@@ -18,15 +18,16 @@ class Grid:
                 main[i].append(int(preboard[i][0][j]))
         return main
 
-    def generate_board(sub):
+    def generate_board(numGiven):
         arr = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+               [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]]
         x = 0
-        while x < 17:
+        # Minimum numGiven to be solved: 17
+        while x < numGiven:
             rowNum = randint(0, 8)
             columnNum = randint(0, 8)
-            num = randint(1,9)
+            num = randint(1, 9)
             if arr[rowNum][columnNum] == 0 and is_valid(arr, num, rowNum, columnNum):
                 arr[rowNum][columnNum] = num
                 x += 1
@@ -45,8 +46,8 @@ class Grid:
 
     ]
 
-    #board = format_board(pre_board)
-    board = generate_board(0)
+    # board = format_board(pre_board)
+    board = generate_board(20)
 
     def __init__(self, rows, columns, width, height):
         self.rows = rows
@@ -147,7 +148,7 @@ class Grid:
                 self.cubes[row][column].set_value(k)
                 self.cubes[row][column].draw(window)
                 update(self, window, time, wrong)
-                pygame.time.delay(10)
+                pygame.time.delay(5)
 
                 if self.solve_visual(window, time, wrong):
                     return True
@@ -156,7 +157,7 @@ class Grid:
                 self.cubes[row][column].set_value(0)
                 update(self, window, time, wrong)
                 self.cubes[row][column].draw(window)
-                pygame.time.delay(10)
+                pygame.time.delay(5)
         return False
 
 

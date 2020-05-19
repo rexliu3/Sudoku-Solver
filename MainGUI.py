@@ -9,6 +9,26 @@ from MainSolver import is_valid, solve_sudoku, find_empty
 pygame.init()
 pygame.font.init()
 
+'''backgroundColor = (255, 255, 255)
+selectedBorderColor = (255, 0, 0)
+sketchedNumberColor = (128, 128, 128)
+numberColor = (0, 0, 0)
+mainLinesColor = (0, 0, 0)
+timeColor = (0, 0, 0)
+wrongCounterColor = (255, 0, 0)'''
+
+# Color Settings
+backgroundColor = (255, 255, 255)
+selectedBorderColor = (163, 67, 73)
+sketchedNumberColor = (224, 202, 203)
+numberColor = (179, 120, 123)
+mainLinesColor = (213, 166, 169)
+timeColor = (179, 120, 123)
+wrongCounterColor = (247, 126, 133)
+
+# Initial number of filled squares when auto-generating a board (minimum is 17)
+initialNumFilled = 30
+
 
 class Grid:
     def format_board(preboard):
@@ -47,7 +67,7 @@ class Grid:
     ]
 
     # board = format_board(pre_board)
-    board = generate_board(20)
+    board = generate_board(initialNumFilled)
 
     def __init__(self, rows, columns, width, height):
         self.rows = rows
@@ -87,8 +107,8 @@ class Grid:
                 thick = 4
             else:
                 thick = 1
-            pygame.draw.line(window, (0, 0, 0), (0, i * cubeWidth), (self.width, i * cubeWidth), thick)
-            pygame.draw.line(window, (0, 0, 0), (i * cubeWidth, 0), (i * cubeWidth, self.width), thick)
+            pygame.draw.line(window, mainLinesColor, (0, i * cubeWidth), (self.width, i * cubeWidth), thick)
+            pygame.draw.line(window, mainLinesColor, (i * cubeWidth, 0), (i * cubeWidth, self.width), thick)
         # Draw Cubes
         for i in range(self.rows):
             for j in range(self.columns):
@@ -180,10 +200,10 @@ class Cube:
         x = self.columns * cubeWidth
         y = self.rows * cubeWidth
         if self.temporary != 0 and self.value == 0:
-            text = font.render(str(self.temporary), 1, (128, 128, 128))
+            text = font.render(str(self.temporary), 1, sketchedNumberColor)
             window.blit(text, (x + (cubeWidth / 2 - text.get_width() / 2), y + (cubeWidth / 2 - text.get_width() / 2)))
         elif not (self.value == 0):
-            text = font.render(str(self.value), 1, (0, 0, 0))
+            text = font.render(str(self.value), 1, numberColor)
             window.blit(text, (x + (cubeWidth / 2 - text.get_width() / 2), y + (cubeWidth / 2 - text.get_width() / 2)))
 
         if self.selected:
@@ -200,20 +220,20 @@ class Cube:
         x = self.columns * cubeWidth
         y = self.rows * cubeWidth
 
-        pygame.draw.line(window, (255, 0, 0), (x, y), (x + cubeWidth, y), 2)
-        pygame.draw.line(window, (255, 0, 0), (x, y), (x, y + cubeWidth), 2)
-        pygame.draw.line(window, (255, 0, 0), (x, y + cubeWidth), (x + cubeWidth, y + cubeWidth), 2)
-        pygame.draw.line(window, (255, 0, 0), (x + cubeWidth, y), (x + cubeWidth, y + cubeWidth), 2)
+        pygame.draw.line(window, selectedBorderColor, (x, y), (x + cubeWidth, y), 2)
+        pygame.draw.line(window, selectedBorderColor, (x, y), (x, y + cubeWidth), 2)
+        pygame.draw.line(window, selectedBorderColor, (x, y + cubeWidth), (x + cubeWidth, y + cubeWidth), 2)
+        pygame.draw.line(window, selectedBorderColor, (x + cubeWidth, y), (x + cubeWidth, y + cubeWidth), 2)
 
 
 def redraw_window(window, board, time, wrong):
-    window.fill((255, 255, 255))
+    window.fill(backgroundColor)
     # Draw time
     font = pygame.font.SysFont("times new roman", 30)
-    text = font.render("Time: " + format_time(time), 1, (0, 0, 0))
+    text = font.render("Time: " + format_time(time), 1, timeColor)
     window.blit(text, (540 - 170, 560))
     # Draw number of wrong counter
-    text = font.render("Number Wrong: " + str(wrong), 1, (255, 0, 0))
+    text = font.render("Number Wrong: " + str(wrong), 1, wrongCounterColor)
     window.blit(text, (10, 560))
     # Draw grid and board
     board.draw(window)

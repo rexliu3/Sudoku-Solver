@@ -27,32 +27,103 @@ timeColor = (179, 120, 123)
 wrongCounterColor = (247, 126, 133)
 
 # Initial number of filled squares when auto-generating a board (minimum is 17)
-initialNumFilled = 30
+initialNumFilled = 40
+
+
+def format_board(preboard):
+    main = [[], [], [], [], [], [], [], [], []]
+    for i in range(0, 9):
+        for j in range(0, 9):
+            main[i].append(int(preboard[i][0][j]))
+    return main
+
+
+def generate_board(numGiven):
+    arr = [[0, 0, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 6, 0, 0, 0, 0, 0, 0],
+           [0, 0, 0, 3, 0, 0, 0, 0, 0], [0, 0, 7, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
+           [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 5, 0, 0, 0, 0]]
+
+    '''x = 0
+    # Minimum numGiven to be solved: 17
+    while x < numGiven:
+        rowNum = randint(0, 8)
+        columnNum = randint(0, 8)
+        num = randint(1, 9)
+        if arr[rowNum][columnNum] == 0 and is_valid(arr, num, rowNum, columnNum):
+            arr[rowNum][columnNum] = num
+            x += 1
+
+    x = 0
+    def generate(x, boar):
+        x += 1
+        rowNum = randint(0, 8)
+        columnNum = randint(0, 8)
+        while boar[rowNum][columnNum] != 0:
+            rowNum = randint(0, 8)
+            columnNum = randint(0, 8)
+
+        if x < numGiven:
+            for k in range(1, 10):
+                # Check if Board with value of k is valid
+                if is_valid(boar, k, rowNum, columnNum):
+                    # If the Board is valid, place the value k at that spot
+                    boar[rowNum][columnNum] = k
+
+                    # Continue solving the next empty spaces
+                    if generate(x, boar):
+                        return True
+                    # Set the position back to 0 because there is an error in the future settings
+                    boar[rowNum][columnNum] = 0
+        else:
+            return True
+        return False
+
+    def solved(ss):
+        for i in range(9):
+            for j in range(9):
+                if ss[i][j] == 0:
+                    return False
+        return True
+    generate(x, arr)
+    y = solve_sudoku(arr)
+    while not solved(y):
+        generate(x, arr)
+        y = solve_sudoku(arr)
+    return arr
+
+    def generate(boar):
+        y = randint(0, 10)
+        while not solve_sudoku(boar) and boar[0][0] == 1:
+            x = 0
+            while x < 17:
+                rowNum = randint(0, 8)
+                columnNum = randint(0, 8)
+                num = randint(1, 9)
+                if boar[rowNum][columnNum] == 0 and is_valid(boar, num, rowNum, columnNum):
+                    boar[rowNum][columnNum] = num
+                    x += 1
+    generate(arr)
+
+
+def generate_board(numGiven):
+    board = generation_board(numGiven)
+
+    def solved(arr):
+        for i in range(9):
+            for j in range(9):
+                if arr[i][j] == 0:
+                    return False
+        return True
+
+    while not solved(board):
+        try:
+            board = solve_sudoku(board)
+        except RecursionError:
+            board = generation_board(numGiven)
+    return board'''
 
 
 class Grid:
-    def format_board(preboard):
-        main = [[], [], [], [], [], [], [], [], []]
-        for i in range(0, 9):
-            for j in range(0, 9):
-                main[i].append(int(preboard[i][0][j]))
-        return main
-
-    def generate_board(numGiven):
-        arr = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
-               [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
-               [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-        x = 0
-        # Minimum numGiven to be solved: 17
-        while x < numGiven:
-            rowNum = randint(0, 8)
-            columnNum = randint(0, 8)
-            num = randint(1, 9)
-            if arr[rowNum][columnNum] == 0 and is_valid(arr, num, rowNum, columnNum):
-                arr[rowNum][columnNum] = num
-                x += 1
-        return arr
-
     pre_board = [
         ["000004050"],
         ["250000079"],
@@ -77,6 +148,14 @@ class Grid:
         self.height = height
         self.model = None
         self.selected = None
+
+    def generate_board_clicked(self, window, time, wrong, widthheight):
+        self.board = []
+        self.board = generate_board(initialNumFilled)
+        self.cubes = [[Cube(self.board[i][j], i, j, widthheight, widthheight) for j in range(9)] for i in range(9)]
+        self.update_model()
+        self.draw(window)
+        update(self, window, time, wrong)
 
     def update_model(self):
         self.model = [[self.cubes[i][j].value for j in range(self.columns)] for i in range(self.rows)]
@@ -151,7 +230,7 @@ class Grid:
             if event.type == pygame.QUIT:
                 run = False
         find = find_empty(self.model)
-        if not find or run == False:
+        if not find or not run:
             return True
         else:
             row, column = find
@@ -253,33 +332,17 @@ def update(inputBoard, window, time, wrong):
     pygame.display.update()
 
 
-def generate_random_board():
-    main = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    for row in range(0, 10):
-        sub = nums
-        for i in range(0, 9):
-            num = randint(1, 10)
-            while not is_valid(main, num, row, i):
-                num = randint(1, 10)
-            main[row][i] = num
-    return main
-
-
 def main():
+    widthheight = 540
     window = pygame.display.set_mode((540, 600))
     pygame.display.set_caption("Sudoku Game Solver")
-    board = Grid(9, 9, 540, 540)
+    board = Grid(9, 9, widthheight, widthheight)
     key = None
     run = True
     start = time.time()
     wrong = 0
     while run:
-
         play_time = round(time.time() - start)
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -308,6 +371,9 @@ def main():
                 if event.key == pygame.K_SPACE:
                     board.solve_visual(window, play_time, wrong)
                     key = None
+                if event.key == pygame.K_g:
+                    board.generate_board_clicked(window, play_time, wrong, widthheight)
+                    key = None
                 if event.key == pygame.K_RETURN:
                     i, j = board.selected
                     if board.cubes[i][j].temporary != 0:
@@ -318,7 +384,6 @@ def main():
                         if board.completed_sudoku():
                             print("Game over")
                             run = False
-
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 clicked = board.click(pos)
@@ -326,7 +391,7 @@ def main():
                     board.select(clicked[0], clicked[1], window)
                     key = None
 
-        if board.selected and key != None:
+        if board.selected and key is not None:
             board.sketch(key)
 
         redraw_window(window, board, play_time, wrong)

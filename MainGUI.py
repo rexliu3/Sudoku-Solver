@@ -137,8 +137,8 @@ class Grid:
 
     ]
 
-    # board = format_board(pre_board)
-    board = generate_board(initialNumFilled)
+    board = format_board(pre_board)
+    # board = generate_board(initialNumFilled)
 
     def __init__(self, rows, columns, width, height):
         self.rows = rows
@@ -149,13 +149,13 @@ class Grid:
         self.model = None
         self.selected = None
 
-    def generate_board_clicked(self, window, time, wrong, widthheight):
+    '''def generate_board_clicked(self, window, time, wrong, widthheight):
         self.board = []
-        self.board = generate_board(initialNumFilled)
+        #self.board = generate_board(initialNumFilled)
         self.cubes = [[Cube(self.board[i][j], i, j, widthheight, widthheight) for j in range(9)] for i in range(9)]
         self.update_model()
         self.draw(window)
-        update(self, window, time, wrong)
+        update(self, window, time, wrong)'''
 
     def update_model(self):
         self.model = [[self.cubes[i][j].value for j in range(self.columns)] for i in range(self.rows)]
@@ -371,9 +371,9 @@ def main():
                 if event.key == pygame.K_SPACE:
                     board.solve_visual(window, play_time, wrong)
                     key = None
-                if event.key == pygame.K_g:
+                '''if event.key == pygame.K_g:
                     board.generate_board_clicked(window, play_time, wrong, widthheight)
-                    key = None
+                    key = None'''
                 if event.key == pygame.K_RETURN:
                     i, j = board.selected
                     if board.cubes[i][j].temporary != 0:

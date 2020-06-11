@@ -4,7 +4,6 @@
     <list default="true" id="c5ebdefc-40c8-496f-b0da-7af514371d5b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainGUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StandardSolver.py" beforeDir="false" afterPath="$PROJECT_DIR$/StandardSolver.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

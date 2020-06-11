@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c5ebdefc-40c8-496f-b0da-7af514371d5b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/venv/Scripts/python.exe" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -224,10 +224,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="377" y="55" key="CommitChangelistDialog2/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1589852210519" />
-    <state x="501" y="215" key="FileChooserDialogImpl" timestamp="1589858364050">
+    <state x="501" y="215" key="FileChooserDialogImpl" timestamp="1591908588736">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="501" y="215" key="FileChooserDialogImpl/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1589858364050" />
+    <state x="501" y="215" key="FileChooserDialogImpl/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1591908588736" />
     <state width="1397" height="143" key="GridCell.Tab.0.bottom" timestamp="1590713744621">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -260,6 +260,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1419" height="300" key="GridCell.Tab.1.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1589443747900" />
+    <state x="222" y="103" key="SettingsEditor" timestamp="1591908606526">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="222" y="103" key="SettingsEditor/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1591908606526" />
     <state x="313" y="193" key="Vcs.Push.Dialog.v2" timestamp="1589852223725">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

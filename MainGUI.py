@@ -38,91 +38,6 @@ def format_board(preboard):
     return main
 
 
-def generate_board(numGiven):
-    arr = [[0, 0, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 6, 0, 0, 0, 0, 0, 0],
-           [0, 0, 0, 3, 0, 0, 0, 0, 0], [0, 0, 7, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
-           [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 5, 0, 0, 0, 0]]
-
-    '''x = 0
-    # Minimum numGiven to be solved: 17
-    while x < numGiven:
-        rowNum = randint(0, 8)
-        columnNum = randint(0, 8)
-        num = randint(1, 9)
-        if arr[rowNum][columnNum] == 0 and is_valid(arr, num, rowNum, columnNum):
-            arr[rowNum][columnNum] = num
-            x += 1
-
-    x = 0
-    def generate(x, boar):
-        x += 1
-        rowNum = randint(0, 8)
-        columnNum = randint(0, 8)
-        while boar[rowNum][columnNum] != 0:
-            rowNum = randint(0, 8)
-            columnNum = randint(0, 8)
-
-        if x < numGiven:
-            for k in range(1, 10):
-                # Check if Board with value of k is valid
-                if is_valid(boar, k, rowNum, columnNum):
-                    # If the Board is valid, place the value k at that spot
-                    boar[rowNum][columnNum] = k
-
-                    # Continue solving the next empty spaces
-                    if generate(x, boar):
-                        return True
-                    # Set the position back to 0 because there is an error in the future settings
-                    boar[rowNum][columnNum] = 0
-        else:
-            return True
-        return False
-
-    def solved(ss):
-        for i in range(9):
-            for j in range(9):
-                if ss[i][j] == 0:
-                    return False
-        return True
-    generate(x, arr)
-    y = solve_sudoku(arr)
-    while not solved(y):
-        generate(x, arr)
-        y = solve_sudoku(arr)
-    return arr
-
-    def generate(boar):
-        y = randint(0, 10)
-        while not solve_sudoku(boar) and boar[0][0] == 1:
-            x = 0
-            while x < 17:
-                rowNum = randint(0, 8)
-                columnNum = randint(0, 8)
-                num = randint(1, 9)
-                if boar[rowNum][columnNum] == 0 and is_valid(boar, num, rowNum, columnNum):
-                    boar[rowNum][columnNum] = num
-                    x += 1
-    generate(arr)
-
-
-def generate_board(numGiven):
-    board = generation_board(numGiven)
-
-    def solved(arr):
-        for i in range(9):
-            for j in range(9):
-                if arr[i][j] == 0:
-                    return False
-        return True
-
-    while not solved(board):
-        try:
-            board = solve_sudoku(board)
-        except RecursionError:
-            board = generation_board(numGiven)
-    return board'''
-
-
 class Grid:
     pre_board = [
         ["000004050"],
@@ -138,7 +53,6 @@ class Grid:
     ]
 
     board = format_board(pre_board)
-    # board = generate_board(initialNumFilled)
 
     def __init__(self, rows, columns, width, height):
         self.rows = rows

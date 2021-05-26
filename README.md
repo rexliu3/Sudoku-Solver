@@ -38,20 +38,14 @@
 <p align="center">
   <img width="400" height="300" src="images/screenshot.png">
 </p>
-
-Python program that learns stock movement based on past and current data and buy/sells stocks accordingly
-* Implemented Alpaca Trading API to import data and create buy/sell orders
-* Designed AI software to predict the movement of stocks based on past data and current trends; creates buy/sell orders accordingly
-* Uploaded program to Google Cloud Storage to run infinitely on Google Cloud
-* Developed with Keras, Sklearn, Numpy, Pandas, and threading
+An interactive Sudoku GUI with built-in Python solver
+* Playable Sudoku game GUI
+* Sudoku board solver to visualize backtracking algorithm
+* Features timer and incorrect move counter
 
 ### Built With
 * [Python](https://www.python.org/)
-* [Keras](https://keras.io/)
-* [scikit-learn](https://scikit-learn.org/)
-* [Numpy](https://numpy.org/)
-* [Pandas](https://pandas.pydata.org/)
-* [Google Cloud Platform](https://cloud.google.com/)
+* [PyGame](https://www.pygame.org/)
 
 
 ## Getting Started
@@ -62,28 +56,48 @@ Python program that learns stock movement based on past and current data and buy
   ```
 
 ### Installation
-
-1. Get a free key_id and secret_key at [https://alpaca.markets/algotrading](https://alpaca.markets/algotrading)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/rexliu3/Sudoku-Solver.git
    ```
-3. Install requirement.txt
-   ```sh
-   pip3 install -r requirements.txt
-   ```
-4. Enter your key_id and secret_key in `Stock_Trading_Bot.py`
-   ```PY
-   super().__init__(key_id='ENTER YOUR KEY_ID',
-                                                secret_key='ENTER YOUR SECRET_KEY',
-                                                base_url='https://paper-api.alpaca.markets')
-   ```
-
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-Simply run `main.py`: ``` python3 main.py ```
+1. (Optional) Change the colors in ```MainGUI.py```
+   ```py
+   backgroundColor = (ENTER DECIMAL CODE HERE)
+   selectedBorderColor = (ENTER DECIMAL CODE HERE)
+   sketchedNumberColor = (ENTER DECIMAL CODE HERE)
+   numberColor = (ENTER DECIMAL CODE HERE)
+   mainLinesColor = (ENTER DECIMAL CODE HERE)
+   timeColor = (ENTER DECIMAL CODE HERE)
+   wrongCounterColor = (ENTER DECIMAL CODE HERE)
+   ```
+2. Enter your custom Sudoku Board in ```MainGUI.py```
+   ```py
+   pre_board = [
+        ["ENTER ROW 1 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 2 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 3 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 4 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 5 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 6 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 7 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 8 HERE AS STRING OF 9 NUMBERS"],
+        ["ENTER ROW 9 HERE AS STRING OF 9 NUMBERS"],
+    ]
+    ```
+3. Run `MainGUI.py`: ``` python3 MainGUI.py ```
+* This will display a Sudoku Board GUI
+* Use the mouse to click and select different boxes on the board
+* Use the 1 - 9 number keys to enter a number in any unfilled box
+  * This will enter the number as a "guess"
+  * To confirm this number, select the box and press "return"/"enter"
+    * If incorrect, this will show up as an wrong X
+    * If correct, the number will fill the box and be confirmed
+* Press "delete" to clear the board
+* Press "space" to auto-solve the board with a back-tracking algorithm
 
 
 <!-- ROADMAP -->

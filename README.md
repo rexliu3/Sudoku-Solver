@@ -32,7 +32,6 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align="center">
@@ -121,12 +120,12 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
-
 <!-- CONTACT -->
 ## Contact
 Rex Liu - rexliu3@berkeley.edu
 
 Project Link: [https://github.com/rexliu3/Sudoku-Solver](https://github.com/rexliu3/Sudoku-Solver)
+
 
 ## Acknowledgements
 Built with reference to [video](https://www.youtube.com/watch?v=eqUwSA0xI-s)

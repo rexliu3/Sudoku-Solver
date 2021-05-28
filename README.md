@@ -37,10 +37,8 @@
 <p align="center">
   <img width="400" height="300" src="images/screenshot.png">
 </p>
-An interactive Sudoku GUI with built-in Python solver
-* Playable Sudoku game GUI
-* Sudoku board solver to visualize backtracking algorithm
-* Features timer and incorrect move counter
+
+An interactive and playable Sudoku GUI with built-in Python solver to visualize backtracking algorithm. Features timer and incorrect move counter.
 
 ### Built With
 * [Python](https://www.python.org/)
